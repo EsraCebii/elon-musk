@@ -1,0 +1,23 @@
+.number {
+    max-width: 50px;
+    margin: 8px;
+}
+
+.car {
+    max-width: 100px;
+
+}
+.card-img-top{
+    max-width: 150px;
+    max-height: 100px;
+}
+.receipt h1{
+    text-align: center;
+    color: yellowgreen;
+}
+.receipt{
+    margin: 20px 500px;
+}
+.card-group{
+    margin-left: 100px;
+}

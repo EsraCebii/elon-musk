@@ -1,0 +1,30 @@
+.card-img{
+    border-radius: 50%;
+    width: 100px;
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+  .card{
+  margin-left: 30%;
+  margin-top: 0px;
+  }
+  .money{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    text-align: center;
+    font-size: xx-large;
+    font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(50, 122, 50);
+    max-width: 50%;
+    margin-left: 350px;
+    margin-bottom: 30px;
+    z-index: 3;
+    height: 50px;
+    padding-top: 10px;
+
+  }
+
+  
+  
