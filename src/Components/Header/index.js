@@ -1,6 +1,6 @@
 import React from 'react';
 import "./styles.css";
-import CountUp from 'react-countup';
+import AnimatedNumber from "animated-number-react";
 import { useSelector} from "react-redux"
 
 
@@ -29,13 +29,10 @@ function Header() {
         </div>
       </div>
       <div className="money">
-      <CountUp
-        start={money}
-        end={moneyArray}
-        duration={1}
-        prefix="$"
-        separator=""
-      />
+      $ <AnimatedNumber
+          value={money}
+          
+        />
       </div>
     </>
   )

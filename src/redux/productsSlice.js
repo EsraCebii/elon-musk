@@ -43,7 +43,7 @@ export const productsSlice = createSlice({
                 id: '6',
                 name: 'Harley Davidson- Sportster S',
                 amount: 0,
-                price: 23.200,
+                price: 23200,
                 img: "https://www.harley-davidson.com/content/dam/h-d/images/product-images/bikes/motorcycle/2021/2021-sportster-s/2021-sportster-s-e85/2021-sportster-s-e85-motorcycle.jpg?impolicy=myresize&rw=500",
             },
             {
@@ -113,14 +113,14 @@ export const productsSlice = createSlice({
                 id: '16',
                 name: 'Portrait of Joseph Roulin',
                 amount: 0,
-                price: 125.3,
+                price: 1253,
                 img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Vincent_van_Gogh_-_Portrait_of_Joseph_Roulin.jpg/800px-Vincent_van_Gogh_-_Portrait_of_Joseph_Roulin.jpg",
             },
             {
                 id: '17',
                 name: 'Spring',
                 amount: 0,
-                price: 65.1,
+                price: 651,
                 img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/%C3%89douard_Manet_-_Jeanne_%28Spring%29.jpg/800px-%C3%89douard_Manet_-_Jeanne_%28Spring%29.jpg",
             },
             {
@@ -158,8 +158,15 @@ export const productsSlice = createSlice({
                 price: 3,
                 img: "https://www.hollyhood.com.tr/contra-ters-yon-tshirt-23864-contra-contra-14554-23-O.jpg",
             },
+            {
+                id: '23',
+                name: "Island",
+                amount: 0,
+                price: 151e6,
+                img: "https://icdn.ensonhaber.com/resimler/galeri/1_11195.jpg",
+            },
         ],
-        money: 151000,
+        money: 151e6,
         moneyArray: [],
     },
     reducers: {
@@ -168,28 +175,29 @@ export const productsSlice = createSlice({
         },
         decrement: (state, action) => {
             const index = state.items.findIndex(todo => todo.id === action.payload);
-            if((state.items[index].amount) > 0) {
+            if ((state.items[index].amount) > 0) {
                 (state.items[index].amount) -= 1;
                 state.money = (state.money + (state.items[index].price));
                 state.moneyArray.unshift(state.money)
             }
         },
         increment: (state, action) => {
-            const {id } = action.payload
+            const { id } = action.payload
             const index = state.items.findIndex(todo => todo.id === id);
-            if((state.money > (state.items[index].price))){
-                state.items[index].amount +=1;
+            if ((state.money >= (state.items[index].price))) {
+                state.items[index].amount += 1;
                 state.money = (state.money - (state.items[index].price));
                 state.moneyArray.unshift(state.money)
             }
         },
-        moneyRestart:(state) => {
-            state.money = 1000;
+        moneyRestart: (state) => {
+            state.money = 151e6;
+            
         }
     },
-    extraReducers:{},
+    extraReducers: {},
 
 });
 
-export const { handleChange,decrement,increment, moneyRestart } = productsSlice.actions;
+export const { handleChange, decrement, increment, moneyRestart } = productsSlice.actions;
 export default productsSlice.reducer;

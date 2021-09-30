@@ -5,6 +5,7 @@ import { handleChange, decrement, increment, moneyRestart  } from "../../redux/p
 import Finish from "../Finish";
 
 
+
 function Things() {
     const things = useSelector((state) => state.products.items);
     const money = useSelector((state) => state.products.money);
@@ -28,6 +29,7 @@ function Things() {
     const handleClose = ()=> {
         setOpen(false);
         dispatch(moneyRestart());
+        
     }
 
     return (
@@ -44,7 +46,7 @@ function Things() {
 
                                 <div className="col-md-4">
                                     {/* //btn btn-light disabled */}
-                                    <button className={money < item.price ? "btn btn-light disabled" : "btn btn-light"}  style={{ marginLeft: 26 }}
+                                    <button className={item.amount > 0 ? "btn btn-light " : "btn btn-light disabled"}  style={{ marginLeft: 26 }}
                                         onClick={() => handleDecrement(item.id)}
                                     >Sell</button>
                                 </div>
@@ -54,7 +56,7 @@ function Things() {
                                     </input>
                                 </div>
                                 <div className="col-md-4">
-                                    <button className="btn btn-success"
+                                    <button className={money < item.price ? "btn btn-success disabled" : "btn btn-success"}
                                         onClick={() => handleIncrement({ id: item.id, name: item.name, price: item.price, amount: item.amount })}
                                     >Buy</button>
 
@@ -66,7 +68,7 @@ function Things() {
 
             </div>
                   
-            { money < 151000 && (
+            { money < 151e6 && (
             <div>
 
                 <div className="receipt" >
@@ -87,7 +89,7 @@ function Things() {
                                         <tr key={i}>
                                             <td>{item.name}</td>
                                             <td>{item.amount}</td>
-                                            <td>{item.price}</td>
+                                            <td>{item.price*item.amount}</td>
                                         </tr>)
                                 ))
                                     }
